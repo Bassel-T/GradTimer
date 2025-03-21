@@ -5693,13 +5693,21 @@
 function countdown() {
     setTimeout(() => {
         let time = document.getElementById("countdown");
-        let now = new Date();
-        let start = Date.parse("August 8 2022 00:00:00 GMT-0500");
-        let target = Date.parse("May 10 2025 19:00:00 GMT-0500");
+        let now = Date.parse(new Date().toISOString());
+        let start = Date.parse("August 8 2022 05:00");
+        let target = Date.parse("May 11 2025 00:00");
         let diff = new Date(target - now);
         let startDiff = new Date(target - start);
         
+        // I have no clue
         diff.setMonth(diff.getMonth() - 1);
+        diff.setDate(diff.getDate() - 1);
+        diff.setHours(diff.getHours() + 1);
+
+        // Assuming we have the same issue in startDiff
+        startDiff.setMonth(startDiff.getMonth() - 1);
+        startDiff.setDate(startDiff.getDate() - 1);
+        startDiff.setHours(startDiff.getHours() + 1);
 
         let dat = moment(diff).format("MM:DD:HH:mm:ss");
         let frac = 100 * (1 - diff / startDiff);
