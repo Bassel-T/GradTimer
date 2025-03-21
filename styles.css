@@ -1,0 +1,72 @@
+#myProgress {
+    width: 100vh;
+    background-color: #2e2e2e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    overflow:hidden;
+}
+
+#myBar {
+    height: 30px;
+    background: linear-gradient(90deg, #008934, #00ff77);
+    animation: loadingAnimation 2s;
+}
+
+#countdown {
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+@keyframes loadingAnimation {
+    0% {width: 0;}
+}
+
+body, html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+#progress {
+    padding-top:10px;
+    padding-bottom:50px;
+}
+
+table {
+    border: 1px black solid;
+    width: 300px;
+    height:400px;
+}
+
+input[type="checkbox"]:disabled {
+    appearance: none;
+    background-color: white;
+    border: 1px solid #000000;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+input[type="checkbox"]:disabled:checked {
+    background-color: #007bff;
+    border-color: #007bff;
+    position: relative;
+}
+
+input[type="checkbox"]:disabled:checked::before {
+    content: "✔";
+    color: white;
+    font-size: 16px;
+    top:-4px;
+    right:-1px;
+    position:relative;
+}
+
+#note {
+    position: absolute;
+    left: 0;
+    top: calc(100vh - 12px);
+    font-size: 12px;
+}
