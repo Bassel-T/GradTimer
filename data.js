@@ -21,7 +21,6 @@ function dateDifference(date1, date2) {
   
     // Calculate remaining milliseconds after months
     let tempDate = new Date(date1);
-    tempDate.setMonth(tempDate.getMonth() + months);
     let diffInMilliseconds = Math.abs(date2.getTime() - tempDate.getTime());
   
     // Calculate days
@@ -39,7 +38,7 @@ function dateDifference(date1, date2) {
     // Calculate seconds
     seconds = Math.floor(diffInMilliseconds / millisecondsInSecond);
   
-    return `${String(months).padStart(2, '0')}:${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    return `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
 setInterval(() => {
@@ -51,7 +50,7 @@ setInterval(() => {
     const progressedMilliseconds = now - start;
     const totalMilliseconds = target - start;
 
-    const dat = completed ? "00:00:00:00:00" : dateDifference(now, target);
+    const dat = completed ? "00:00:00:00" : dateDifference(now, target);
     const time = document.getElementById("countdown");
     time.innerHTML = dat;
 
