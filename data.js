@@ -26,9 +26,16 @@ function dateDifference(date1, date2) {
     // Calculate days
     days = Math.floor(diffInMilliseconds / millisecondsInDay);
     diffInMilliseconds %= millisecondsInDay;
+
+    var diffHours = diffInMilliseconds / millisecondsInHour;
+
+    if (days == 0) {
+        var roundUpHours = Math.ceil(diffHours);
+        return `-${roundUpHours} Hours Remain-`;
+    }
   
     // Calculate hours
-    hours = Math.floor(diffInMilliseconds / millisecondsInHour);
+    hours = Math.floor(diffHours);
     diffInMilliseconds %= millisecondsInHour;
   
     // Calculate minutes
@@ -37,10 +44,6 @@ function dateDifference(date1, date2) {
   
     // Calculate seconds
     seconds = Math.floor(diffInMilliseconds / millisecondsInSecond);
-  
-    if (days == 0) {
-        return `-${hours} Hours Remain-`;
-    }
 
     return `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
