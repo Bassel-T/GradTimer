@@ -38,6 +38,10 @@ function dateDifference(date1, date2) {
     // Calculate seconds
     seconds = Math.floor(diffInMilliseconds / millisecondsInSecond);
   
+    if (days == 0) {
+        return `-${hours} Hours Remain-`;
+    }
+
     return `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
@@ -50,11 +54,27 @@ setInterval(() => {
     const progressedMilliseconds = now - start;
     const totalMilliseconds = target - start;
 
-    const dat = completed ? "00:00:00:00" : dateDifference(now, target);
-    const time = document.getElementById("countdown");
-    time.innerHTML = dat;
+    if (completed) {
+        document.getElementsByTagName("body")[0].innerHTML = "<p>If you see this, I did something HORRIBLY wrong.</p>"
+        return;
+    }
 
-    const frac = completed ? 100 : 100 * progressedMilliseconds / totalMilliseconds;
-    document.getElementById("myBar").style.width = `${frac}%`;
-    document.getElementById("progress").innerHTML = `${frac}%`;
+    const dat = completed ? "00:00:00:00" : dateDifference(now, target);
+
+    if (dat.includes('Hours')) {
+        document.getElementsByClassName("original")[0].style.display = 'none';
+        document.getElementsByClassName("dawn")[0].style.display = 'block';
+        document.getElementsByTagName('body')[0].style.lineHeight = 0.03;
+        document.getElementById('time-remaining').innerHTML = dat;
+    }
+    else {
+        document.getElementsByClassName("original")[0].style.display = 'block';
+        document.getElementsByClassName("dawn")[0].style.display = 'none';
+        const time = document.getElementById("countdown");
+        time.innerHTML = dat;
+    
+        const frac = completed ? 100 : 100 * progressedMilliseconds / totalMilliseconds;
+        document.getElementById("myBar").style.width = `${frac}%`;
+        document.getElementById("progress").innerHTML = `${frac}%`;
+    }
 }, 1000);

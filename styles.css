@@ -47,3 +47,54 @@ table {
     top: calc(100vh - 12px);
     font-size: 12px;
 }
+
+h2 {
+    font-family: "Arial", Arial, sans-serif;
+}
+
+h2, h3 {
+    font-size: 40px;
+    letter-spacing: -2px;
+    font-weight: lighter;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+body {
+    background-color: black;
+    color: white;
+    font-family: "ArialNarrow", Arial, sans-serif;
+    text-align: center;
+}
+
+h1, h3 {
+    text-transform: capitalize;
+}
+
+h1 {
+    font-size: 90px;
+    letter-spacing: -5px;
+}
+user agent stylesheet
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+.dawn {
+    display:none;
+}
