@@ -48,7 +48,7 @@ function dateDifference(date1, date2) {
     return `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
-setInterval(() => {
+var interval = setInterval(() => {
     const now = new Date();
     const start = new Date("August 8 2022 05:00");
     const target = new Date("May 10 2025 19:00");
@@ -58,7 +58,10 @@ setInterval(() => {
     const totalMilliseconds = target - start;
 
     if (completed) {
-        document.getElementsByTagName("body")[0].innerHTML = "<p>If you see this, I did something HORRIBLY wrong.</p>"
+        document.getElementsByClassName("original")[0].style.display = 'none';
+        document.getElementsByClassName("dawn")[0].style.display = 'none';
+        document.getElementsByTagName("img")[0].style.display = 'block';
+        clearInterval(interval);
         return;
     }
 
